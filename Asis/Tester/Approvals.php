@@ -35,7 +35,6 @@ class Asis_Tester_Approvals
 
         if (!($approvedContents === $resultStr)) {
             file_put_contents(self::getFilename($call, self::STATUS_FAILED, $extension), $resultStr);
-            //throw new Exception();
             throw new Exception('Approval File Mismatch: results does not match contents of ' . $approvedFilename);
         }
         return self::PASSED_RETURN_VALUE;

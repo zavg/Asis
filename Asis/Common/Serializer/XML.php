@@ -1,10 +1,11 @@
 <?php
 
-require_once "Asis/Common/Interfaces/Serializer.php";
-require_once 'XML/Serializer.php';
-require_once 'XML/Unserializer.php';
+require_once __DIR__ . "/../Interfaces/SerializerInterface.php";
 
-class Asis_Common_Serializer_XML implements Asis_Common_Interfaces_Serializer
+require_once __DIR__ . '/../../Library/XML/Serializer.php';
+require_once __DIR__ . '/../../Library/XML/Unserializer.php';
+
+class Asis_Common_Serializer_XML implements Asis_Common_Interfaces_SerializerInterface
 {
     public $_serializer = null;
     public $_unserializer = null;

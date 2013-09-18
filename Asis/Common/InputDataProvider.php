@@ -1,12 +1,16 @@
 <?php
 
-require_once 'Asis/Common/Util.php';
-require_once 'Asis/Common/Interfaces/InputDataProviderInterface.php';
+require_once 'Interfaces/InputDataProviderInterface.php';
+require_once 'Serializer/XML.php';
+require_once 'Util.php';
 
 class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataProviderInterface
 {
-    private $_fullTemplatesPath = '/var/www/zavg/tests/inputs';
-    private $_inputExtension = 'xml';
+    private $_config = array(
+        'applicationPath' => '',
+        'inputDataPath'  => 'tests/inputs',
+        'inputExtension' => 'xml'
+    );
 
     private $_fullInputData = array();
     private $_fileNamesArray = array();
@@ -17,8 +21,8 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
     {
         if ($options) {
             foreach ($options as $key => $value) {
-                if (array_key_exists("_" . $key, get_object_vars($this)))
-                    $this->{"_" . $key} = $value;
+                if (array_key_exists($key, $this->_config))
+                    $this->_config[$key] = $value;
             }
         }
         $this->readFullInputData();
@@ -31,10 +35,31 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
         return $this->_serializer;
     }
 
-    public function setFullTemplatesPath($path)
+    public function setInputDataPath($path)
     {
-        $this->_fullTemplatesDir = $path;
+        $this->_config['inputDataPath'] = $path;
         return $this;
+    }
+
+    public function getInputDataPath()
+    {
+        return $this->_config['inputDataPath'];
+    }
+
+    public function setApplicationPath($path)
+    {
+        $this->_config['applicationPath'] = $path;
+        return $this;
+    }
+
+    public function getApplicationPath()
+    {
+        return $this->_config['applicationPath'];
+    }
+
+    private function getInputExtension()
+    {
+        return $this->_config['inputExtension'];
     }
 
     public function setFileNamesArray($data)
@@ -56,7 +81,7 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
 
     public function getRelationalPath($mapperName)
     {
-        return str_replace($this->_fullTemplatesPath, '', dirname($this->_fileNamesArray[$mapperName]));
+        return str_replace($this->getInputDataPath(), '', dirname($this->_fileNamesArray[$mapperName]));
     }
 
     public function getClasses()
@@ -82,46 +107,45 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
     public function addDataset($className, $functionName, $newDataset)
     {
         $fullInputDataArray = $this->_fullInputData;
-        foreach ($fullInputDataArray[$className][$functionName] as $oldDataset) {
-            if ($newDataset == $oldDataset) {
-                //throw new Exception('duplicated dataset');
-                return false;
+        if ($fullInputDataArray)
+            foreach ($fullInputDataArray[$className][$functionName] as $oldDataset) {
+                if ($newDataset == $oldDataset) {
+                    //throw new Exception('duplicated dataset');
+                    return false;
+                }
             }
-        }
         if (!array_key_exists($className, $fullInputDataArray)) {
-            $reflection = new ReflectionClass($className);
+            $reflection = new \ReflectionClass($className);
             $pathinfo = pathinfo($reflection->getFileName());
-            $this->_fileNamesArray[$className] = str_replace(APPLICATION_PATH, $this->_fullTemplatesPath,
-                ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." .
-                    $this->_inputExtension));
+            if ($this->getApplicationPath()) {
+                $this->_fileNamesArray[$className] = str_replace($this->getApplicationPath(), $this->getInputDataPath(),
+                    ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." . $this->getInputExtension()));
+            } else {
+                $this->_fileNamesArray[$className] = $this->getInputDataPath() .
+                    ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." . $this->getInputDataPath());
+            }
         }
         $fullInputDataArray[$className][$functionName][] = $newDataset;
         $this->setFullInputData($fullInputDataArray);
-        $xmlStr = $this->getXML(array($className => $fullInputDataArray[$className]));
-        return $this->saveXML($xmlStr, $this->_fileNamesArray[$className]);
+        $serializedData = $this->getSerializer()->serialize(array($className => $fullInputDataArray[$className]));
+        return $this->saveSerializedData($serializedData, $this->_fileNamesArray[$className]);
     }
 
-    private function getXML($dataArray)
-    {
-        return $this->getSerializer()->serialize($dataArray);
-    }
-
-    private function saveXML($xmlStr, $fileName)
+    private function saveSerializedData($str, $fileName)
     {
         if (!file_exists(dirname($fileName)))
             mkdir(dirname($fileName), 0777, true);
         $fp = fopen($fileName, "w");
-        $fwrite = fwrite($fp, $xmlStr);
+        $fwrite = fwrite($fp, $str);
         fclose($fp);
         if ($fwrite)
-            return TRUE;
-        else
-            return FALSE;
+            return true;
+        return false;
     }
 
     public function readFullInputData()
     {
-        $fileNames = Asis_Common_Util::getFileNames($this->_fullTemplatesPath);
+        $fileNames = Asis_Common_Util::getFileNames($this->getInputDataPath());
         $fullInputData = array();
         $fileNamesArray = array();
         foreach ($fileNames as $fileName) {
