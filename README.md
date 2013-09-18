@@ -15,7 +15,7 @@ Often you have a huge legacy code project where you have no tests at all, but yo
 
 Asis tool is exactly about mantaining the legacy code through creating and running characterization tests automatically. 
 
-ApprovalTests allows you to record and approve every possible output of any module, meanwhile the goal of Asis is to maximally automate this process. 
+ApprovalTests allows you to record and approve every possible output of any module, meanwhile the main goal of Asis is to maximally automate this process. 
 
 ##Main concept
 
@@ -209,7 +209,7 @@ XML files are saved in input directory (which is set in `inputDataPath` paramete
 It means that if you have recorded the test for some class in `/path/to/your/project/models/mappers/UserMapper.php` file, then the recorded data will be in `/path/to/directory_with_testdata/inputs/models/mappers/UserMapper.xml`.
 
 It seems to be very convenient to surf tests data when it is organized in the same way as the code to test.
-The output files are saved in output directory (which is set in `outputDataPath` parameter of `Asis_Tester` constructor) structured in directories with names equal to the names of classes.
+The output files are saved in output directory (which is set in `outputDataPath` parameter of `Asis_Tester`'s constructor) structured in directories with names equal to the names of classes.
 
 The output files naming convention is currently the following:
 
@@ -217,7 +217,7 @@ The output files naming convention is currently the following:
 
 for example, `bar-a5f5d7a5fc80600513c623db108873af.received.txt` 
 
-Currently there are the following <status> values:
+Currently there are the following `<status>` values:
 
 - __"received"__ - when the output result is evaluated, serialized and saved;
 - __"approved"__  - when the output result is approved;
@@ -245,18 +245,18 @@ Consider it just as a working prototype for concept proving and starting point f
 - Add possibility to create tests for non-method functions (which do not belong to certain class)
 - Add possibility to exclude some functions or datasets from test suite (may be neseccary for functions with random output)
 - Add limit on recording of tests which belong to the same class of equality
-- Now tool can create tests only for public methods of classes, it will be great to add possibility to record and approve private methods outputs
-- Add wider functionality to test database interactions (especcialy its DML-part)
+- Now tool can create tests only for public methods of classes, it will be great to add possibility to record and approve outputs of private methods 
+- Add wider functionality to test database interactions (especially its DML-part)
 - Use some better implementation of XML serialization instead of old and poorly mantained PEAR `XML_Serializer` package (there are lots of "strict standards" and "deprecated" errors during its execution)
 - Add some other serializers, as, for example, fast unserialization using simple but effective var\_export and require_once technique, as it was done [here](https://github.com/sebastianbergmann/phpunit/pull/989)
 - Add some other input data storages (SQLite is one of the options)
-- Integrate with some AOP-frameworks (Aspect-oriented programming)
+- Integrate with some AOP (Aspect-oriented programming) frameworks 
 
 ###Other
 
 - Create composer package
 - Add code comments and proper documentation 
 
-## Licence
+## License
 
-Licenced by GPL
+Licensed by GPL
