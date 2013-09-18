@@ -55,7 +55,7 @@ require_once 'PEAR.php';
 /**
  * uses XML_Parser to unserialize document
  */
-require_once 'XML/Parser.php';
+require_once __DIR__ . 'Parser.php';
 
 /**
  * option: Convert nested tags to array or object
@@ -799,7 +799,7 @@ class XML_Unserializer extends PEAR
                     && class_exists($classname)
                 ) {
                     $value['value'] = new $classname;
-                    $isZormed = method_exists($value['value'], 'getVars');
+                    
 
                 } else {
                 $value['value'] =
@@ -816,8 +816,7 @@ class XML_Unserializer extends PEAR
                 // set properties
                 foreach ($value['children'] as $prop => $propVal) {
                     // check whether there is a special method to set this property
-                    if(isset($isZormed))
-                        $prop = $isZormed ? str_replace('_', '', $prop) : $prop;
+                    
                     $setMethod = 'set' . $prop;
                     if (method_exists($value['value'], $setMethod)) {
                         call_user_func(array(&$value['value'], $setMethod), $propVal);
