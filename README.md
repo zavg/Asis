@@ -19,7 +19,7 @@ ApprovalTests allows you to record and approve every possible output of any modu
 
 ##Main concept
 
-The main idea is the following: while user or tester is using your product (for example, Web site) the Asis tool records the function calls which are performed, the sets of arguments which are passed to the function and the received output. Output can be any, starting from strings, integers, HTML, JSON and finishing with serialized objects with complex internal structure. We don't care what we receive - we just record it and approve as correct result, because we now that we are working with the stable release version.
+The main idea is the following: while user or tester is using your product (for example, Web site) the Asis tool records the function calls which are performed, the sets of arguments which are passed to the function and the received output. Output can be any, starting from strings, integers, HTML, JSON and finishing with serialized objects with complex internal structure. We don't care what we receive - we just record it and approve as correct result, because we know that we are working with the stable release version.
 
 So just using your product or surfing the Web-site , user or tester records hundreds or thousands different characterization tests!
 
