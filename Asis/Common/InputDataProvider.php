@@ -115,7 +115,7 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
                 }
             }
         if (!array_key_exists($className, $fullInputDataArray)) {
-            $reflection = new \ReflectionClass($className);
+            $reflection = new ReflectionClass($className);
             $pathinfo = pathinfo($reflection->getFileName());
             if ($this->getApplicationPath()) {
                 $this->_fileNamesArray[$className] = str_replace($this->getApplicationPath(), $this->getInputDataPath(),
