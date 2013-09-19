@@ -18,7 +18,7 @@ class Foo
 // Creating a logger for our simple test project
 // with project directory root linked to current directory
 $logger = new Asis_Logger(
-    array("applicationPath" => __DIR__)
+    array("applicationPath" => dirname(__FILE__))
 );
 
 // Logging the sample input data to tests/inputs/sample.xml

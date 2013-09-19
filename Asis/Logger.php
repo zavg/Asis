@@ -1,7 +1,7 @@
 <?php
 
 
-require_once __DIR__ . '/Common/InputDataProvider.php';
+require_once dirname(__FILE__) . '/Common/InputDataProvider.php';
 
 class Asis_Logger
 {
@@ -12,7 +12,7 @@ class Asis_Logger
         $this->_inputDataProvider = new Asis_Common_InputDataProvider(
             array(
                 'applicationPath' => isset($options['applicationPath']) ? $options['applicationPath'] : "",
-                'inputDataPath' => isset($options['inputPath']) ? $options['inputPath'] : "tests/inputs",
+                'inputDataPath' => isset($options['inputDataPath']) ? $options['inputDataPath'] : "tests/inputs",
                 'inputExtension' => isset($options['inputExtension']) ? $options['inputExtension'] : "xml",
             )
         );

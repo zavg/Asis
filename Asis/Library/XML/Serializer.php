@@ -56,7 +56,7 @@ require_once 'PEAR.php';
 /**
  * uses XML_Util to create XML tags
  */
-require_once __DIR__ .'/Util.php';
+require_once dirname(__FILE__) .'/Util.php';
 
 /**
  * option: string used for indentation
