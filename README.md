@@ -50,7 +50,7 @@ just create `Asis_Logger` object (for the simplicity we bind project directory r
 
 ```php
 $logger = new Asis_Logger(
-    array("applicationPath" => __DIR__)
+    array("applicationPath" => dirname(__FILE__))
 );
 ```
 

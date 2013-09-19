@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . "/../Interfaces/SerializerInterface.php";
+require_once dirname(__FILE__) . "/../Interfaces/SerializerInterface.php";
 
-require_once __DIR__ . '/../../Library/XML/Serializer.php';
-require_once __DIR__ . '/../../Library/XML/Unserializer.php';
+require_once dirname(__FILE__) . '/../../Library/XML/Serializer.php';
+require_once dirname(__FILE__) . '/../../Library/XML/Unserializer.php';
 
 class Asis_Common_Serializer_XML implements Asis_Common_Interfaces_SerializerInterface
 {
