@@ -98,7 +98,7 @@ P.S.: We consciously do not use PHP 5.3+ namespaces in library (we use Zend Fram
 
 ##Logger injection strategies
 
-You can simply add `Asis_Logger` code to some common points of your application, and call its `log` method with paramteres received by simple stack backtracing.
+You can simply add `Asis_Logger` code to some common points of your application, and call its `log` method with parameters received by simple stack backtracing.
 
 PHP pseudocode:
 ```php
