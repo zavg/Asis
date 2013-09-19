@@ -122,7 +122,7 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
                     ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." . $this->getInputExtension()));
             } else {
                 $this->_fileNamesArray[$className] = $this->getInputDataPath() .
-                    ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." . $this->getInputDataPath());
+                    ($pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'] . "." . $this->getInputExtension());
             }
         }
         $fullInputDataArray[$className][$functionName][] = $newDataset;
@@ -135,6 +135,7 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
     {
         if (!file_exists(dirname($fileName)))
             mkdir(dirname($fileName), 0777, true);
+
         $fp = fopen($fileName, "w");
         $fwrite = fwrite($fp, $str);
         fclose($fp);

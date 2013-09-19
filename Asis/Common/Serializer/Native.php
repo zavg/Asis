@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../Interfaces/SerializerInterface.php";
+require_once dirname(__FILE__) . "/../Interfaces/SerializerInterface.php";
 
 class Asis_Common_Serializer_Native implements Asis_Common_Interfaces_SerializerInterface
 {
