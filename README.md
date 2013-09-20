@@ -33,6 +33,16 @@ This concept is far away from being the "silver bullet" of unit testing. One of 
 
 Currently we chose PHP language and implemented very simple set of functionality, but I am pretty sure that this concept may be usefull in other programming languages and environments.
 
+##Quick start
+
+Just run 
+
+```bash
+php sample.php
+```
+
+from your command line and see explanations in __Usage__ section. 
+
 ##Usage
 
 The recording of test is performed in one line of code, so for simple class
