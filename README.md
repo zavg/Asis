@@ -257,6 +257,13 @@ Consider it just as a working prototype for concept proving and starting point f
 - Create composer package
 - Add code comments and proper documentation 
 
+## Authors
+
+Authors of initial (0.1.0) version are
+
+- [@zavg](https://github.com/zavg)
+- [@PaulLebedev](https://github.com/PaulLebedev)
+
 ## License
 
 Licensed by GPL
