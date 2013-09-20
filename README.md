@@ -29,7 +29,7 @@ Now periodically running recorded tests we can ensure that the functionality of 
 
 _(Thus we injected tests recording with primitive stack backtracing in Zend_Db_Table class of our Zend Framework application and receive tests suit with hundreds of variuos tests for our object-relational mapping layer in several minutes of just web-site surfing!)_
 
-This concept is far away from being the "siver bullet" of unit testing. One of the reasons is the following: it does not generate any "dirty" tests with broken input which are probably even more important than simplest tests with just regulary input data.
+This concept is far away from being the "silver bullet" of unit testing. One of the reasons is the following: it does not generate any "dirty" tests with broken input which are probably even more important than simplest tests with just regulary input data.
 
 Currently we chose PHP language and implemented very simple set of functionality, but I am pretty sure that this concept may be usefull in other programming languages and environments.
 
