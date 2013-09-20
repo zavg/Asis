@@ -79,9 +79,9 @@ class Asis_Common_InputDataProvider implements Asis_Common_Interfaces_InputDataP
         return $this->_fullInputData;
     }
 
-    public function getRelationalPath($mapperName)
+    public function getRelationalPath($className)
     {
-        return str_replace($this->getInputDataPath(), '', dirname($this->_fileNamesArray[$mapperName]));
+        return str_replace($this->getInputDataPath(), '', dirname($this->_fileNamesArray[$className]));
     }
 
     public function getClasses()
