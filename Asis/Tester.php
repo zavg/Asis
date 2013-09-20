@@ -44,7 +44,7 @@ class Asis_Tester
         if (!$this->_inputDataProvider)
             $this->_inputDataProvider = new Asis_Common_InputDataProvider(
                 array(
-                    'fullTemplatesPath' => $this->_config['inputDataPath'],
+                    'inputDataPath' => $this->_config['inputDataPath'],
                     "inputExtension" => $this->_config['inputExtension']
                 )
             );
