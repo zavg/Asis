@@ -56,7 +56,7 @@ class Foo {
 }
 ```
 
-just create `Asis_Logger` object (for the simplicity we bind project root directory root to the current directory)
+just create `Asis_Logger` object (for the simplicity we bind project root directory to the current directory)
 
 ```php
 $logger = new Asis_Logger(
