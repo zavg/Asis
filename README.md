@@ -5,7 +5,7 @@ __Do you want to cover your legacy code with thousands of automated unit tests i
 
 Asis means "as is", and the Asis project is inspired by [ApprovalTests](http://approvaltests.sourceforge.net/) project and shares its key concepts.
 
-As metioned in [this article](http://php.dzone.com/articles/approval-tests-alternative) currently ApprovalTests concepts works best when you deal with 2 things: 
+As mentioned in [this article](http://php.dzone.com/articles/approval-tests-alternative) currently ApprovalTests concepts works best when you deal with 2 things: 
 - UI design;
 - legacy code.
 
