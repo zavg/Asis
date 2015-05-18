@@ -237,7 +237,7 @@ While "received" and "approved" statuses are well-known from ApprovalTests, the 
 
 ##Contributions
 
-__The further contributions are vary warmly welcomed!__
+__The further contributions are very warmly welcomed!__
 
 (Suggestions too, even those which imply whole architecture redesign).
 
