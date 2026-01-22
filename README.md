@@ -1,7 +1,7 @@
-#ASIS 0.1.0
+# ASIS 0.1.0
 __Do you want to cover your legacy code with thousands of automated unit tests in just few lines of code?!..__
 
-##Introduction
+## Introduction
 
 Asis means "as is", and the Asis project is inspired by [ApprovalTests](http://approvaltests.sourceforge.net/) project and shares its key concepts.
 
@@ -17,7 +17,7 @@ Asis tool is exactly about mantaining the legacy code through creating and runni
 
 ApprovalTests allows you to record and approve every possible output of any module, meanwhile the main goal of Asis is to maximally automate this process. 
 
-##Main concept
+## Main concept
 
 The main idea is the following: while user or tester is using your product (for example, Web site) the Asis tool records the function calls which are performed, the sets of arguments which are passed to the function and the received output. Output can be any, starting from strings, integers, HTML, JSON and finishing with serialized objects with complex internal structure. We don't care what we receive - we just record it and approve as correct result, because we know that we are working with the stable release version.
 
@@ -33,7 +33,7 @@ This concept is far away from being the "silver bullet" of unit testing. One of 
 
 Currently we chose PHP language and implemented very simple set of functionality, but I am pretty sure that this concept may be usefull in other programming languages and environments.
 
-##Quick start
+## Quick start
 
 Just run 
 
@@ -43,7 +43,7 @@ php sample.php
 
 from your command line and see explanations in __Usage__ section. 
 
-##Usage
+## Usage
 
 The recording of test is performed in one line of code, so for simple class
  
@@ -106,7 +106,7 @@ $tester->run();
 
 P.S.: We consciously do not use PHP 5.3+ namespaces in library (we use Zend Framefork 1.x class naming convention instead) cause we target on legacy environments were even older versions of PHP interpreter can be installed.
 
-##Logger injection strategies
+## Logger injection strategies
 
 You can simply add `Asis_Logger` code to some common points of your application, and call its `log` method with parameters received by simple stack backtracing.
 
@@ -126,7 +126,7 @@ Using of AOP will allow you to call the `log` function on every public method ca
 resulting in much more higher code coverage!
 
 
-##Advanced usage
+## Advanced usage
 
 You can provide additional parameters to `Asis_Logger` and `Asis_Tester` to set directory pathes and extensions.
 
@@ -195,7 +195,7 @@ class Asis_Commander
 ```
 
 
-##Implementation details
+## Implementation details
 
 Currently Asis uses 2 internal serializers by default:
 - [PEAR `XML_Serializer`](http://pear.php.net/package/XML_Serializer/) to create human readable XML files with tests;
@@ -235,7 +235,7 @@ Currently there are the following `<status>` values:
 
 While "received" and "approved" statuses are well-known from ApprovalTests, the "failed" status was added in Asis for debugging purposes.
 
-##Contributions
+## Contributions
 
 __The further contributions are very warmly welcomed!__
 
@@ -245,9 +245,9 @@ Of course, current implementation is very raw and it may be enhanced and refacto
 
 Consider it just as a working prototype for concept proving and starting point for further development.
 
-##Ideas for TO-DO LIST
+# Ideas for TO-DO LIST
 
-###New functionality
+### New functionality
 
 - Add clean-up operation (removing files with failed tests data)
 - Create command-line interface
@@ -262,7 +262,7 @@ Consider it just as a working prototype for concept proving and starting point f
 - Add some other input data storages (SQLite is one of the options)
 - Integrate with some AOP (Aspect-oriented programming) frameworks 
 
-###Other
+### Other
 
 - Create composer package
 - Add code comments and proper documentation 
