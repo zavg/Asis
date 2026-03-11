@@ -43,7 +43,7 @@ php sample.php
 
 from your command line and see explanations in __Usage__ section. 
 
-##Usage
+## Usage
 
 The recording of test is performed in one line of code, so for simple class
  
